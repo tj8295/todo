@@ -1,5 +1,6 @@
-%h1
-  Todos!
-= bootstrap_form_for(@todo) do |f|
-  = f.text_field :label: "Add todo"
-  = f.submit "Add Todo"
+%section.register.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %ul
+        - @todos.each do |todo|
+          %li= link_to todo.name, todo_path(todo)

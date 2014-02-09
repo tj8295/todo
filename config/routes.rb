@@ -13,7 +13,7 @@ TodosApp::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  root to: 'todos#index'
+  root to: 'todos#new'
   resources :todos
 
   # Example resource route with options:

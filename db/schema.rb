@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209025700) do
+ActiveRecord::Schema.define(version: 20140209193310) do
+
+  create_table "taggings", force: true do |t|
+    t.integer "todo_id"
+    t.integer "tag_id"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
 
   create_table "todos", force: true do |t|
     t.string "name"
+    t.string "description"
+  end
+
+  create_table "videos", force: true do |t|
+    t.string "videos"
   end
 
 end
