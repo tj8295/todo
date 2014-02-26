@@ -23,10 +23,19 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-nav'
+  gem 'fabrication'
+  gem 'faker'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'letter_opener'
+  gem 'figaro'
 end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'capybara'
 end
 
 group :production do

@@ -13,8 +13,11 @@ TodosApp::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  root to: 'todos#new'
+  root to: 'pages#front'
   resources :todos
+  resources :sessions, only: [:create]
+  resources :users
+  get 'sign_out', to: "sessions#destroy"
 
   # Example resource route with options:
   #   resources :products do

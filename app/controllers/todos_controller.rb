@@ -1,6 +1,9 @@
 class TodosController < ApplicationController
+  before_filter :ensure_sign_in
+
   def index
     @todos = Todo.all
+    @todo = Todo.new
   end
 
   def new
@@ -10,7 +13,9 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.new(todo_params)
-    if @todo.save
+    if @todo.save_with_tags
+      AppMailer.notify_on_new_todo(current_user, @todo).deliver
+
       flash[:success] = "saved todo"
       redirect_to root_path
     else
@@ -24,7 +29,7 @@ class TodosController < ApplicationController
   end
 
   private
-    def todo_params
-      params.require(:todo).permit(:name, :description)
-    end
+  def todo_params
+    params.require(:todo).permit(:name, :description)
+  end
 end
