@@ -25,7 +25,7 @@ class TodosController < ApplicationController
   end
 
   def show
-    @todo = Todo.find(params[:id])
+    @todo = Todo.find_by(token: params[:id])
   end
 
   private

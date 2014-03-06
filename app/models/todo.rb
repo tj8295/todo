@@ -1,8 +1,12 @@
+# require_relative '../../lib/tokenable'
+
 class Todo < ActiveRecord::Base
+  include Tokenable
   has_many :taggings
   has_many :tags, through: :taggings
   validates :name, presence: true
   # validates :description, presence: true
+
 
   def name_only?
     description.blank?
@@ -21,8 +25,14 @@ class Todo < ActiveRecord::Base
     end
   end
 
+  def to_param
+    token
+  end
+
 
   private
+
+
   def tag_text
     if tags.any?
       " (#{tags.one? ? 'tag' : 'tags'}: #{tags.map(&:name).first(4).join(", ")}#{', more...' if tags.count > 4})"

@@ -82,12 +82,18 @@ describe TodosController do
       end
 
       it "sends to the right recipient" do
+        john = Fabricate(:user)
+        set_current_user(john)
        post :create, todo: { name: "Shop AT the Apple Store" }
         message = ActionMailer::Base.deliveries.last
-        expect(message.to).to eq(john.email)
+        message.to.should == [john.email]
       end
 
-      it "has the right content"
+      it "has the right content" do
+       post :create, todo: { name: "Shop AT the Apple Store" }
+        message = ActionMailer::Base.deliveries.last
+        message.body.should include("Shop AT the Apple Store")
+      end
     end
 
     context "with inline locations" do

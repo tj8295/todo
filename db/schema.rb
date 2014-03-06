@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226171403) do
+ActiveRecord::Schema.define(version: 20140227234325) do
 
   create_table "taggings", force: true do |t|
     t.integer "todo_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140226171403) do
   create_table "todos", force: true do |t|
     t.string "name"
     t.string "description"
+    t.string "token"
   end
 
   create_table "users", force: true do |t|
