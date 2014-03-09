@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227234325) do
+ActiveRecord::Schema.define(version: 20140306103103) do
 
   create_table "taggings", force: true do |t|
     t.integer "todo_id"
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(version: 20140227234325) do
   end
 
   create_table "users", force: true do |t|
-    t.string "username"
-    t.string "full_name"
-    t.string "email"
+    t.string  "username"
+    t.string  "full_name"
+    t.string  "email"
+    t.boolean "admin"
   end
 
   create_table "videos", force: true do |t|

@@ -19,6 +19,13 @@ TodosApp::Application.routes.draw do
   resources :users
   get 'sign_out', to: "sessions#destroy"
 
+  namespace :admin do
+    resources :todos, only: [:index]
+  end
+
+  resources :payments
+
+
   # Example resource route with options:
   #   resources :products do
   #     member do

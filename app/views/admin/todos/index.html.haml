@@ -1,0 +1,6 @@
+= "Hello, #{current_user.full_name} #{link_to 'sign out', sign_out_path}".html_safe
+%br
+%ul
+  - @todos.each do |todo|
+    %li= link_to "#{todo.display_text}", todo
+    \-

@@ -1,0 +1,23 @@
+%p Thank you for your support.
+/ = form_tag payments_path do
+/   %script(src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_wUUlTBT8HkbSoT2DcHcE8hYP" data-image="/square-image.png" data-name="Support Todo App" data-description="Thank you for your donation." data-amount="2000")
+
+/ content_for :head do
+%script(src="https://js.stripe.com/v2/")
+
+:javascript
+  Stripe.setPublishableKey('pk_test_wUUlTBT8HkbSoT2DcHcE8hYP');
+= javascript_include_tag 'payments'
+
+= form_tag payments_path, id: 'payment-form' do
+  %fieldset.credit_card
+    %span.payment-errors
+    %label Credit Card Number
+    %input.span3.card-number(type="text")
+    %label Security Code
+    %input.span3.card-cvc(type="text")
+    %label Expiration
+    = select_month(Date.today, {add_month_numbers: true}, name: nil, class: 'span card-expiry-month')
+    = select_year(Date.today.year, {start_year: Date.today.year, end_year: Date.today.year + 4}, name: nil, class: 'span1 card-expiry-year')
+  %fieldset.actions
+    = submit_tag "Submit Payment", class: "btn payment_submit"

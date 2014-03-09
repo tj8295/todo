@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+gem 'stripe'
+gem 'stripe_event'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem 'rails'

@@ -1,4 +1,4 @@
-class TodosController < ApplicationController
+class TodosController < AuthenticatedController
   before_filter :ensure_sign_in
 
   def index
@@ -14,7 +14,7 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     if @todo.save_with_tags
-      AppMailer.notify_on_new_todo(current_user, @todo).deliver
+      AppMailer.delay.notify_on_new_todo(current_user, @todo)
 
       flash[:success] = "saved todo"
       redirect_to root_path

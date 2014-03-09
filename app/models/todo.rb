@@ -5,6 +5,7 @@ class Todo < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
   validates :name, presence: true
+  belongs_to :user
   # validates :description, presence: true
 
 
