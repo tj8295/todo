@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'bootstrap_form'
 gem 'bcrypt-ruby'
 gem 'sidekiq'
+  gem 'figaro'
 
 group :development do
   gem 'sqlite3'
@@ -33,12 +34,13 @@ group :development, :test do
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'letter_opener'
-  gem 'figaro'
 end
 
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do

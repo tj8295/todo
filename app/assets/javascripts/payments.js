@@ -1,9 +1,9 @@
-jQuery(function($)) {
-  $('#payment-form').submit(function(event)) {
+jQuery(function($) {
+  $('#payment-form').submit(function(event) {
     var $form = $(this);
     $form.find('.payment_submit').prop('disabled', true)
 ;
-Stripe.CreateToken({
+Stripe.card.CreateToken({
     number: $('.card-number').val(),
     cvc: $('.card-cvc').val(),
     exp_month: $('.card-expiry-month').val(),

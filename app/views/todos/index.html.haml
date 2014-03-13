@@ -7,4 +7,7 @@
 %br
 %ul
   - @todos.each do |todo|
-    %li= link_to "#{todo.display_text}", todo
+   / %li= link_to "#{todo.display_text}", todo
+   / %li= link_to TodoDecorator.new(todo).display_text, todo
+    %li= link_to todo.decorator.display_text, todo
+
